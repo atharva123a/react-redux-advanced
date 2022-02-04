@@ -1,12 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // short-circuit evaluation
 // ternary operator
 
 const ShortCircuit = () => {
-  // const firstValue = text || 'hello world';
-  // const secondValue = text && 'hello world';
+  // short circuit evaluation plays on and or operators:
+  const [text, setText] = useState("athens");
+  const first = text || "hello world!";
+  const second = text && "hello world!";
 
-  return <h2>short circuit</h2>;
+  const [isError, setIsError] = useState(false);
+
+  const handleToggle = () => {
+    setIsError((prevState) => {
+      return !prevState;
+    });
+  };
+
+  return (
+    <>
+      {/* <h1>{first}</h1> */}
+      {/* <h1>value : {second}</h1> */}
+      {/* {if(true){console.log('true')}} */}
+      <h1>{text || "Athens Badass"}</h1>
+      <button className="btn" onClick={handleToggle}>
+        toggle {isError ? "message" : "error"}
+      </button>
+      {isError && <h2>Error...</h2>}
+      {isError ? (
+        <p>an error occured!</p>
+      ) : (
+        <div>
+          <h2>There is no error!</h2>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default ShortCircuit;
