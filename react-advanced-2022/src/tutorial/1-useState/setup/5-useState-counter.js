@@ -8,7 +8,7 @@ const UseStateCounter = () => {
   const complexIncrement = () => {
     //this handler returns asynchronously:
     setTimeout(() => {
-      // when we pass in a function, we have access to the previous state and we can refer to that state to update our value:
+      // when we pas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s in a function, we have access to the previous state and we can refer to that state to update our value:
       setCounter((prevState) => prevState + 1);
     }, 2000);
   };

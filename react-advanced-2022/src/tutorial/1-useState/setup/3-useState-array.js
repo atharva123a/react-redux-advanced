@@ -5,16 +5,10 @@ const UseStateArray = () => {
   const [people, setPeople] = React.useState(data);
 
   const deleteItem = (id) => {
-    // here we explictly define what the new array is going to look like:
-    // let newList = people.filter((person) => person.id !== id);
-
-    // if we passed a function to setPeople:
-    setPeople((prevState) => {
-      // we return in this fashion:
-      return prevState.filter((person) => person.id !== id);
+    setPeople((oldPeople) => {
+      let newPeople = oldPeople.filter((person) => person.id !== id);
+      return newPeople;
     });
-    // implict way of doing it:
-    // setPeople(people.filter((person) => person.id !== id));
   };
 
   return (

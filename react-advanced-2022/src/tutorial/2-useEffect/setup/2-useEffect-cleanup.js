@@ -1,10 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 
-// cleanup function
-// second argument
+const UseEffectCleanUp = () => {
+  const [size, setSize] = useState(window.innerWidth);
 
-const UseEffectCleanup = () => {
-  return <h2>useEffect cleanup</h2>;
+  const handleResize = () => {
+    setSize(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+  return (
+    <React.Fragment>
+      <h1>Width:</h1>
+      <h2>{size} px</h2>
+    </React.Fragment>
+  );
 };
 
-export default UseEffectCleanup;
+export default UseEffectCleanUp;
